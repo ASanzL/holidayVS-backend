@@ -13,7 +13,7 @@ function dbConnection() {
         database: process.env.dbName,
         entities: [holidays_model_1.Holidays],
         extra: {
-            ssl: true
+            ssl: { rejectUnauthorized: false }
         }
     });
 }

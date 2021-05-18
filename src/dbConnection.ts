@@ -14,7 +14,7 @@ export function dbConnection() {
         database: process.env.dbName,
         entities: [Holidays],
         extra: {
-            ssl: true
+            ssl: { rejectUnauthorized: false }
         }
     });
 }
