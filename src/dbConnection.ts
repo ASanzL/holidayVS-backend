@@ -3,6 +3,8 @@ import { Holidays } from './models/holidays.model'
 import * as dotenv from 'dotenv';
 
 export function dbConnection() {
+    console.log(`Start connection to: ${process.env.dbHost}: ${process.env.dbPort}`);
+    
     return createConnection({
     type: "postgres",
     host: process.env.dbHost,

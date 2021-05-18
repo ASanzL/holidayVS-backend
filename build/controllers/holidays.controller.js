@@ -40,8 +40,14 @@ var dbConnection_1 = require("../dbConnection");
 var holidays_model_1 = require("../models/holidays.model");
 var HolidayController = /** @class */ (function () {
     function HolidayController() {
+        // Maximum score for one win
         this.kValue = 32;
+        // The biggest gap in score that gives a full score
+        this.scoreInterval = 400;
     }
+    /**
+    Returns all holidays in alphabetical order
+     */
     HolidayController.prototype.getHolidays = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
@@ -69,6 +75,9 @@ var HolidayController = /** @class */ (function () {
             });
         });
     };
+    /**
+    Votes on holiday1 and updates score for both holidays
+    */
     HolidayController.prototype.vote = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
@@ -87,8 +96,8 @@ var HolidayController = /** @class */ (function () {
                                     return [4 /*yield*/, holidayRepo.findOne({ where: { name: req.body.holiday2 } })];
                                 case 3:
                                     holiday2 = _a.sent();
-                                    probablityHoliday1Win = 1 / (1 + Math.pow(10, (holiday2.score - holiday1.score) / 400));
-                                    probablityHoliday2Win = 1 / (1 + Math.pow(10, (holiday1.score - holiday2.score) / 400));
+                                    probablityHoliday1Win = 1 / (1 + Math.pow(10, (holiday2.score - holiday1.score) / this.scoreInterval));
+                                    probablityHoliday2Win = 1 / (1 + Math.pow(10, (holiday1.score - holiday2.score) / this.scoreInterval));
                                     holiday1.score += this.kValue * (1 - probablityHoliday1Win);
                                     holiday2.score += this.kValue * (0 - probablityHoliday2Win);
                                     return [4 /*yield*/, holidayRepo.save(holiday1)];
@@ -112,6 +121,9 @@ var HolidayController = /** @class */ (function () {
             });
         });
     };
+    /**
+    Returns two random holidays - no duplicates
+    */
     HolidayController.prototype.getTwoRandomHolidays = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;

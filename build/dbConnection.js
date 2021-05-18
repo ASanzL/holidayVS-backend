@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
 var holidays_model_1 = require("./models/holidays.model");
 function dbConnection() {
+    console.log("Start connection to: " + process.env.dbHost + ": " + process.env.dbPort);
     return typeorm_1.createConnection({
         type: "postgres",
         host: process.env.dbHost,

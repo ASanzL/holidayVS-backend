@@ -32,8 +32,8 @@ export class HolidayController {
             const holiday1 = await holidayRepo.findOne({ where: { name: req.body.holiday1 }});
             const holiday2 = await holidayRepo.findOne({ where: { name: req.body.holiday2 }});
 
-            const probablityHoliday1Win = 1 / (1 + Math.pow(10, (holiday2.score-holiday1.score) / scoreInterval));
-            const probablityHoliday2Win = 1 / (1 + Math.pow(10, (holiday1.score-holiday2.score) / scoreInterval));
+            const probablityHoliday1Win = 1 / (1 + Math.pow(10, (holiday2.score-holiday1.score) / this.scoreInterval));
+            const probablityHoliday2Win = 1 / (1 + Math.pow(10, (holiday1.score-holiday2.score) / this.scoreInterval));
 
             holiday1.score += this.kValue * (1 - probablityHoliday1Win);
             holiday2.score += this.kValue * (0 - probablityHoliday2Win);
