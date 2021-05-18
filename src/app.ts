@@ -18,6 +18,6 @@ app.post('/vote', (req, res) => holidayController.vote(req, res));
 
 app.get('/match', (req, res) => holidayController.getTwoRandomHolidays(req, res));
 
-app.listen(3000, function () {
-    console.log('App is listening on port 3000!');
+app.listen(process.env.PORT || 3000, function () {
+    console.log(`App is listening on port ${process.env.PORT}!`);
 });

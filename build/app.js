@@ -14,7 +14,7 @@ var holidayController = new holidays_controller_1.HolidayController();
 app.get('/holidays', function (req, res) { return holidayController.getHolidays(req, res); });
 app.post('/vote', function (req, res) { return holidayController.vote(req, res); });
 app.get('/match', function (req, res) { return holidayController.getTwoRandomHolidays(req, res); });
-app.listen(3000, function () {
-    console.log('App is listening on port 3000!');
+app.listen(process.env.PORT || 3000, function () {
+    console.log("App is listening on port " + process.env.PORT + "!");
 });
 //# sourceMappingURL=app.js.map
