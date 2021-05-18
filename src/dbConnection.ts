@@ -6,12 +6,15 @@ export function dbConnection() {
     console.log(`Start connection to: ${process.env.dbHost}: ${process.env.dbPort}`);
     
     return createConnection({
-    type: "postgres",
-    host: process.env.dbHost,
-    port: Number(process.env.dbPort),
-    username: process.env.postgresUsername,
-    password: process.env.postgresPassword,
-    database: process.env.dbName,
-    entities: [Holidays],
+        type: "postgres",
+        host: process.env.dbHost,
+        port: Number(process.env.dbPort),
+        username: process.env.postgresUsername,
+        password: process.env.postgresPassword,
+        database: process.env.dbName,
+        entities: [Holidays],
+        extra: {
+            ssl: true
+        }
     });
 }

@@ -12,6 +12,9 @@ function dbConnection() {
         password: process.env.postgresPassword,
         database: process.env.dbName,
         entities: [holidays_model_1.Holidays],
+        extra: {
+            ssl: true
+        }
     });
 }
 exports.dbConnection = dbConnection;
