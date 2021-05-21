@@ -2,9 +2,7 @@ import { createConnection } from 'typeorm';
 import { Holidays } from './models/holidays.model'
 import * as dotenv from 'dotenv';
 
-export function dbConnection() {
-    console.log(`Start connection to: ${process.env.dbHost}: ${process.env.dbPort}`);
-    
+export function dbConnection() {    
     return createConnection({
         type: "postgres",
         url: process.env.DATABASE_URL,
