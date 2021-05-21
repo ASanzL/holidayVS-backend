@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 var app = express();
 var cors = require("cors");
 var holidays_controller_1 = require("./controllers/holidays.controller");
-app.use(cors());
+app.use(cors({ origin: "https://asanzl.github.io", credentials: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var holidayController = new holidays_controller_1.HolidayController();
