@@ -6,7 +6,7 @@ const app = express();
 import * as cors from 'cors';
 import { HolidayController } from './controllers/holidays.controller';
 
-app.use(cors());
+app.use(cors({ origin: "https://asanzl.github.io", credentials: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
